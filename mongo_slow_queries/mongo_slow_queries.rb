@@ -15,6 +15,10 @@ class ScoutMongoSlow < Scout::Plugin
       name: Mongo Server
       notes: Where mongodb is running
       default: localhost
+    port:
+      name: Mongo Server Port
+      notes: Where mongodb is running
+      default: 27017
     threshold:
       name: Threshold (millisecs)
       notes: Slow queries are >= this time in milliseconds to execute (min. 100)
@@ -35,6 +39,7 @@ class ScoutMongoSlow < Scout::Plugin
   def build_report
     database = option("database").to_s.strip
     server = option("server").to_s.strip
+    port = option("port").to_s.strip.to_i rescue 27017
     
     if server.empty?
       server ||= "localhost"
@@ -52,7 +57,7 @@ class ScoutMongoSlow < Scout::Plugin
       threshold = threshold_str.to_i
     end
 
-    db = Mongo::Connection.new(server).db(database)
+    db = Mongo::Connection.new(server, port).db(database)
     db.authenticate(option(:username), option(:password)) if !option(:username).to_s.empty?
     enable_profiling(db)
 
