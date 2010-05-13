@@ -2,6 +2,10 @@ class RedisMonitor < Scout::Plugin
   needs 'redis', 'yaml'
 
   OPTIONS = <<-EOS
+  client_address:
+    name: Address
+    notes: Address of the Redis server
+    default: 127.0.0.1
   client_port:
     name: Port
     notes: Redis port to pass to the client library.
@@ -23,6 +27,7 @@ class RedisMonitor < Scout::Plugin
 
   def build_report
     redis = Redis.new :port     => option(:client_port),
+                      :host     => option(:client_address),
                       :db       => option(:db),
                       :password => option(:password)
     begin
