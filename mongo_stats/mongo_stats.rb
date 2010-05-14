@@ -43,13 +43,14 @@ class ScoutMongoStats < Scout::Plugin
       database = "admin"
     end
 
-    db = Mongo::Connection.new(server, port)  # .db(database)
+    conn = Mongo::Connection.new(server, port)  
+    db = conn.db(database)
     db.authenticate(option(:username), option(:password)) if !option(:username).to_s.empty?
 
     last_run = memory(:last_run) || Time.now
     current_time = Time.now
 
-    stats = db['admin'].command({:serverStatus => 1}, true)   
+    stats = conn['admin'].command({:serverStatus => 1}, true)   
 
     # 
     # {"uptime"=>223.0, "localTime"=>Fri May 14 03:03:33 UTC 2010, 
