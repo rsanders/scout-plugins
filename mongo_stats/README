@@ -1,0 +1,75 @@
+Measures MongoDB statistics.
+
+Dependencies: the mongo and mongo_ext gems (gem install mongo; gem install mongo_ext).
+IMPORTANT: The minimum version for both gems is 0.18.3.  
+
+------
+
+Connections
+Conn/sec
+Op counts: inserts/find/remove/group/etc.
+Flushing frequency / delay
+Asserts/errors
+Index counters
+Heap Usage and Page faults
+Memory used: res, virt, mapped
+Lock time
+Uptime
+
+// db.serverStatus()
+{
+        "uptime" : 36920,
+        "localTime" : "Fri May 14 2010 02:12:32 GMT+0000 (UTC)",
+        "globalLock" : {
+                "totalTime" : 36919811718,
+                "lockTime" : 38450397,
+                "ratio" : 0.001041457017540904
+        },
+        "mem" : {
+                "resident" : 105,
+                "virtual" : 800,
+                "supported" : true,
+                "mapped" : 672
+        },
+        "connections" : {
+                "current" : 7,
+                "available" : 19993
+        },
+        "extra_info" : {
+                "note" : "fields vary by platform",
+                "heap_usage_bytes" : 382088,
+                "page_faults" : 152
+        },
+        "indexCounters" : {
+                "btree" : {
+                        "accesses" : 1040,
+                        "hits" : 1040,
+                        "misses" : 0,
+                        "resets" : 0,
+                        "missRatio" : 0
+                }
+        },
+        "backgroundFlushing" : {
+                "flushes" : 622,
+                "total_ms" : 81821,
+                "average_ms" : 131.54501607717043,
+                "last_ms" : 14,
+                "last_finished" : "Fri May 14 2010 02:12:06 GMT+0000 (UTC)"
+        },
+        "opcounters" : {
+                "insert" : 8914,
+                "query" : 107,
+                "update" : 0,
+                "delete" : 0,
+                "getmore" : 2,
+                "command" : 387
+        },
+        "asserts" : {
+                "regular" : 0,
+                "warning" : 7,
+                "msg" : 0,
+                "user" : 0,
+                "rollovers" : 0
+        },
+        "ok" : 1
+}

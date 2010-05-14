@@ -1,0 +1,145 @@
+metadata: 
+  uptime_in_hours: 
+    units: hours
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Uptime
+  resident_memory_in_mb: 
+    units: mb
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Resident memory
+  virtual_memory_in_mb: 
+    units: mb
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Virtual memory
+  mapped_memory_in_mb: 
+    units: mb
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Mapped memory
+  curr_connections: 
+    units: ""
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Current connections
+  available_connections: 
+    units: ""
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: Available connections
+
+
+  index_btree_accesses_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: BTree Index Accesses
+  index_btree_hits_per_sec: 
+    units: per second
+    larger_is_better: "1"
+    delimiter: ","
+    precision: "0"
+    label: BTree Index Hits
+  index_btree_misses_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: BTree Index Misses
+    
+  opcount_insert_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Insert Operations
+  opcount_query_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Query Operations
+  opcount_update_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Update Operations
+  opcount_delete_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Delete Operations
+  opcount_getmore_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Getmore Operations
+  opcount_command_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Command Operations
+
+  assert_regular_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Assert Regular 
+  assert_warning_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Assert Warning
+  assert_message_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Assert Message
+  assert_user_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Assert User
+  assert_rollover_per_sec: 
+    units: per second
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "0"
+    label: Assert Rollover 
+
+  lock_ratio: 
+    units: ""
+    larger_is_better: "0"
+    delimiter: ","
+    precision: "10"
+    label: Lock Ratio
+
+#  page_faults: 
+#    units: ""
+#    larger_is_better: "0"
+#    delimiter: ","
+#    precision: "0"
+#    label: Page Faults
+#  misses_per_sec: 
+#    units: per second
+#    larger_is_better: "0"
+#    delimiter: ","
+#    precision: "2"
+#    label: Misses
