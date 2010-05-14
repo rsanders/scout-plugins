@@ -3,7 +3,7 @@ metadata:
     units: hours
     larger_is_better: "1"
     delimiter: ","
-    precision: "0"
+    precision: "1"
     label: Uptime
   resident_memory_in_mb: 
     units: mb
@@ -41,95 +41,95 @@ metadata:
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: BTree Index Accesses
   index_btree_hits_per_sec: 
     units: per second
     larger_is_better: "1"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: BTree Index Hits
   index_btree_misses_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: BTree Index Misses
     
   opcount_insert_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Insert Operations
   opcount_query_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Query Operations
   opcount_update_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Update Operations
   opcount_delete_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Delete Operations
   opcount_getmore_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Getmore Operations
   opcount_command_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Command Operations
 
   assert_regular_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Assert Regular 
   assert_warning_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Assert Warning
   assert_message_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Assert Message
   assert_user_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Assert User
   assert_rollover_per_sec: 
     units: per second
     larger_is_better: "0"
     delimiter: ","
-    precision: "0"
+    precision: "4"
     label: Assert Rollover 
 
-  lock_ratio: 
+  lock_percentage: 
     units: ""
     larger_is_better: "0"
     delimiter: ","
     precision: "10"
-    label: Lock Ratio
+    label: Lock Time Percentage
 
 #  page_faults: 
 #    units: ""

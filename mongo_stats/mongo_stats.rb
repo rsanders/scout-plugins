@@ -33,25 +33,17 @@ class ScoutMongoStats < Scout::Plugin
   def build_report
     database = option("database").to_s.strip
     server = option("server").to_s.strip
-    port = option("port").to_s.strip.to_i rescue 27017
+    port = option("port") ? (option("port").strip.to_i rescue 27017) : 27017
     
     if server.empty?
-      server ||= "localhost"
+      server = "localhost"
     end
-    
+
     if database.empty?
-      return error( "A Mongo database name was not provided.",
-                    "Slow query logging requires you to specify the database to profile." )
+      database = "admin"
     end
 
-    threshold_str = option("threshold").to_s.strip
-    if threshold_str.empty?
-      threshold = 100
-    else
-      threshold = threshold_str.to_i
-    end
-
-    db = Mongo::Connection.new(server, port).db(database)
+    db = Mongo::Connection.new(server, port)  # .db(database)
     db.authenticate(option(:username), option(:password)) if !option(:username).to_s.empty?
 
     last_run = memory(:last_run) || Time.now
@@ -89,31 +81,31 @@ class ScoutMongoStats < Scout::Plugin
     btreeCounters = stats['indexCounters']['btree'] rescue nil
     if btreeCounters
       ['accesses', 'hits', 'misses'].each do |ctr|
-        counter("index_btree_#{ctr}_per_sec".to_sym => btreeCounters[ctr].to_i, :per => :second)
+        counter("index_btree_#{ctr}_per_sec".to_sym, btreeCounters[ctr].to_i, :per => :second)
       end
     end
     
     opcounters = stats['opcounters']
     if opcounters
       ["insert", "query", "update", "delete", "getmore", "command"].each do |ctr|
-        counter("opcount_#{ctr}_per_sec".to_sym => opcounters[ctr].to_i, :per => :second)
+        counter("opcount_#{ctr}_per_sec".to_sym, opcounters[ctr].to_i, :per => :second)
       end
     end
 
     asserts = stats['asserts'] rescue nil
     if asserts
       ["regular", "warning", "msg", "user", "rollovers"].each do |ctr|
-        counter("assert_#{ctr}_per_sec".to_sym => asserts[ctr].to_i, :per => :second)
+        counter("assert_#{ctr}_per_sec".to_sym, asserts[ctr].to_i, :per => :second)
       end
     end
 
     # todo - flush stats, locktime, total time, page faults (on Linux)
 
-    report(:lock_ratio => stats['globalLock']['ratio'].to_f)
+    report(:lock_percentage => stats['globalLock']['ratio'].to_f * 100)
 
     remember(:last_run,Time.now)
   rescue Mongo::MongoDBError => error
-    error("A Mongo DB error has occurred.", "A Mongo DB error has occurred")
+    error("A Mongo DB error has occurred: #{error.message}.", "A Mongo DB error has occurred: #{error.message}")
   rescue RuntimeError => error
     if error.message =~/Error with command.+unauthorized/i
       error("Invalid MongoDB Authentication", "The username/password for your MongoDB database are incorrect")
